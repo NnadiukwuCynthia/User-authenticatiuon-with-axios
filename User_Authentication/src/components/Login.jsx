@@ -22,9 +22,21 @@ const Login = () => {
         setPwd('');
         setUserName('');
         console.log(userName, Pwd);
+        setSuccessMsg(true)
     }
+
   return (
     <>
+    {successMsg ? (
+    <section>
+            <h1>You Have Logged In Successfully</h1>
+            <br />
+            <p>
+            <a href="#">Go Back to Home </a>
+            </p>
+    </section>
+        ) : (
+   
     <section>
             <p ref={errRef} className={errMsg ? 'errMsg' : 'offScreen'} aria-live='assertive'>
                 {errMsg}
@@ -41,8 +53,24 @@ const Login = () => {
              onChange={(e) => setUserName(e.target.value)}
              required
              />
+            <label htmlFor="password">Password</label>
+            <input
+             type="password"
+             id="password"
+             value={Pwd}
+             onChange={(e) => setPwd(e.target.value)}
+             required
+             />
+             <button>Sign In</button>
         </form>
+        <p> 
+            Need An Account ? <br />
+            <span>
+                <a href="#">Sign Up</a>
+            </span>
+        </p>
     </section>
+     )}
     </>
   )
 };
